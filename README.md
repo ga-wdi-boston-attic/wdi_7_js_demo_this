@@ -119,6 +119,20 @@ var deathstar = new Deathstar();
 
 **Context**: `this` refers to the newly-created object instance.
 
+## jQuery's `$(this)`
+
+When we select an element using jQuery, `$(this)` will point to the element selected. jQuery also overrides `this` such that `$(this)[0] == this;`. What does this mean? Well, sometimes when we query elements, we get a single element back, and other times we get multiple. Whenever we use `$(this)`, we're always grabbing the first element of our jQuery object.
+
+```js
+$('button').click(function () {
+    $(this).css('background-color', 'red');
+});
+
+// click the button, observe background changes to red
+```
+
+Additionally, using `$(this)` is a best practice since `this` is a JavaScript keyword and won't have any jQuery methods (`.css`, `.append`, `.val`, etc.). On the other hand, `$(this)` will behave as you expect
+
 ## Summary
 
 > 1. Is the function called with `new` (**new binding**)? If so, `this` is the newly constructed object.
@@ -131,6 +145,8 @@ var deathstar = new Deathstar();
 >     `var bar = foo()`
 >
 > Source: [You-Dont-Know-JS/ch2.md](https://github.com/getify/You-Dont-Know-JS/blob/58dbf4f867be0d9c51dfc341765e4e4211608aa1/this%20&%20object%20prototypes/ch2.md)
+
+Inside a jQuery method, `$(this)` refers to the document element that was selected.
 
 ## Lab (Pair)
 
@@ -151,3 +167,4 @@ For each example, you will edit `app/this.html` to include the appropriate scrip
 
 - [Understand JavaScript’s “this” With Clarity, and Master It | JavaScript is Sexy](http://javascriptissexy.com/understand-javascripts-this-with-clarity-and-master-it/)
 - [You-Dont-Know-JS/README.md at master · getify/You-Dont-Know-JS](https://github.com/getify/You-Dont-Know-JS/blob/master/this%20&%20object%20prototypes/README.md#you-dont-know-js-this--object-prototypes)
+- [codepaq: jQuery - this vs $(this)](http://codepaq.blogspot.com/2013/11/jquery-this-vs-this.html)
