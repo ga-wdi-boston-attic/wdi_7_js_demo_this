@@ -121,7 +121,7 @@ var deathstar = new Deathstar();
 
 ## jQuery's `$(this)`
 
-When we select an element using jQuery, `$(this)` will point to the element selected. jQuery also overrides `this` such that `$(this)[0] == this;`. What does this mean? Well, sometimes when we query elements, we get a single element back, and other times we get multiple. Whenever we use `$(this)`, we're always grabbing the first element of our jQuery object.
+When we select an element using jQuery, `$(this)` will point to the element selected. `$(this)` is most often used with event handlers, in which case it points to the target of the event callback.
 
 ```js
 $('button').click(function () {
@@ -131,7 +131,7 @@ $('button').click(function () {
 // click the button, observe background changes to red
 ```
 
-Additionally, using `$(this)` is a best practice since `this` is a JavaScript keyword and won't have any jQuery methods (`.css`, `.append`, `.val`, etc.). On the other hand, `$(this)` will behave as you expect
+Using `$(this)` with jQuery should be your default choice, since `this` is a JavaScript keyword and won't have any jQuery methods (`.css`, `.append`, `.val`, etc.).
 
 ## Summary
 
