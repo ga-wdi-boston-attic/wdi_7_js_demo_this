@@ -12,6 +12,13 @@ By the end of this, students should be able to:
 - Explain what `this` points to in each calling context.
 - Read and follow the execution context of code that uses different `this` idioms.
 
+## Instructions
+
+1. Fork and clone.
+1. `npm install`
+1. `bower install`
+1. Follow along.
+
 ## `this` Is A Referent
 
 > We use this similar to the way we use pronouns in natural languages like English and French. We write: “John is running fast because he is trying to catch the train.” Note the use of the pronoun “he.” We could have written this: “John is running fast because John is trying to catch the train.” We don’t reuse “John” in this manner, for if we do, our family, friends, and colleagues would abandon us. Yes, they would. In a similar aesthetic manner, we use the this keyword as a shortcut, a referent to refer to an object.
