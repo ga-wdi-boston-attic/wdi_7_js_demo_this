@@ -162,6 +162,7 @@ For each example, you will edit `app/this.html` to include the appropriate scrip
 - `inner_function_fixed.js` - Fixed inner function.
 - `reassign_method_bad.js` - Changing the runtime context of a method to the global object.
 - `reassign_method_fixed.js` - Changing the runtime context of a method with the javscript _bind_ function.
+- `jquery_this.js` - jQuery's `$(this)` versus `this`
 
 ## Additional Resources
 
