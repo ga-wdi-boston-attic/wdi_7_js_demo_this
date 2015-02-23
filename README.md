@@ -1,6 +1,6 @@
 ![General Assembly Logo](http://i.imgur.com/ke8USTq.png)
 
-# What is `this`? 
+# What is `this`?
 
 ![What is this?](http://i.giphy.com/bYGMDZP58u5bi.gif)
 
@@ -27,6 +27,97 @@ By the end of this, students should be able to:
 
 ## `this` Changes by Call Context
 
+A function can indiscriminately operate upon *any* object. When a function is invoked, it is *bound* to an object on which it operates. The *contextual* object on which a function operates is referenced using the keyword `this`.
+
+```js
+var xwing = {
+    pilot: null,
+
+    setPilot: function(pilot) {
+        this.pilot = pilot;
+        this.update();
+    },
+
+    update: function() {
+        console.log('This X-Wing has changed!');
+    }
+};
+
+xwing.setPilot("Luke Skywalker");
+// >> "This X-Wing has changed!"
+
+console.log(xwing.pilot);
+// >> "Luke Skywalker"
+```
+
+## The Four Patterns of Invocation
+
+We must *invoke* a function to run it (ie: call upon the function to do its thing). Amazingly, there are FOUR ways to invoke a function in JavaScript. This makes JS both amazingly flexible and absolutely insane.
+
+### Function Invocation Pattern
+
+When a function is invoked without context, the function is bound to global scope:
+
+```js
+function goBoom() {
+    console.log(this);
+}
+
+goBoom();
+// this === window
+```
+
+**Context**: `this` refers to the "window" object (global scope).
+
+### Method Invocation Pattern
+
+When a function is defined on an object, it is said to be a *method* of the object. When a method is invoked through its host object, the method is bound to its host:
+
+```js
+var deathstar = {
+    goBoom: function() {
+      console.log(this);
+  }
+};
+
+deathstar.goBoom();
+// this === deathstar
+```
+
+**Context**: `this` refers to the host object.
+
+### Call/Apply Invocation Pattern
+
+Function objects have their own set of native methods, most notably are `.call` and `.apply`. These methods will invoke the function with a provided contextual object.
+
+```js
+function goBoom() {
+    console.log(this);
+}
+
+var deathstar = {};
+goBoom.call(deathstar);
+// this === deathstar
+```
+
+**Context**: `this` refers to the passed object.
+
+### Constructor Invocation Pattern
+
+Any function may act as a constructor for new object instances. New object instances may be constructed with the `"new"` keyword while invoking a function.
+
+Constructors are very similar to Ruby class constructors, in that they represent proper nouns within our application. Therefore they should follow the convention of capitalized names:
+
+```js
+function Deathstar() {
+    console.log(this);
+}
+
+var deathstar = new Deathstar();
+// this === shiny new Deathstar instance
+```
+
+**Context**: `this` refers to the newly-created object instance.
 
 ## Summary
 
@@ -49,10 +140,10 @@ For each example, you will edit `app/this.html` to include the appropriate scrip
 
 - `object_literal.js` - 'this' in an object literal.
 - `global_function.js` - 'this' in a global function.
-- `event_handler_broken.js` - Broken button event handler.  
+- `event_handler_broken.js` - Broken button event handler.
 - `event_handler_fixed.js` - Fixed button event handler.
-- `inner_function_bad.js` - Broken inner function.  
-- `inner_function_fixed.js` - Fixed inner function.  
+- `inner_function_bad.js` - Broken inner function.
+- `inner_function_fixed.js` - Fixed inner function.
 - `reassign_method_bad.js` - Changing the runtime context of a method to the global object.
 - `reassign_method_fixed.js` - Changing the runtime context of a method with the javscript _bind_ function.
 
